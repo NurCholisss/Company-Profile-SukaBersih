@@ -104,7 +104,7 @@
     </div>
 </section>
 
-<!-- Produk Unggulan - Horizontal Scrollable Grid -->
+<!-- Produk Unggulan - Responsive Grid -->
 <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
@@ -113,52 +113,38 @@
             <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-4"></div>
         </div>
 
-        <!-- Horizontal Scrollable Product Grid -->
-        <div class="relative">
-            <div class="overflow-hidden">
-                <div class="flex pb-8 -mx-4 px-4 scrollbar-hide">
-                    <div class="grid grid-cols-4 gap-6 w-full">
-                        @foreach($products->take(4) as $product)
-                        <div class="group bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300">
-                            <!-- Product Image -->
-                            <div class="relative h-48 w-full bg-gray-100">
-                                <img 
-                                    src="{{ $product->image_url }}" 
-                                    alt="{{ $product->name }}" 
-                                    class="w-full h-full object-contain p-4 transition duration-500 group-hover:scale-105"
-                                    onerror="this.src='https://via.placeholder.com/256x256?text=Produk+Tidak+Tersedia'"
-                                >
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                                <div class="absolute top-3 right-3">
-                                    <button class="w-9 h-9 bg-white/90 rounded-full flex items-center justify-center text-gray-800 hover:text-blue-600 transition">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <!-- Product Info -->
-                            <div class="p-4">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h3 class="text-lg font-semibold text-gray-800 truncate">{{ $product->name }}</h3>
-                                    <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">New</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-blue-700 font-bold">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                                    <a href="{{ route('products.show', $product) }}" class="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
-                                        Detail
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+        <!-- Responsive Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            @foreach($products->take(4) as $product)
+            <div class="group bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                <!-- Product Image -->
+                <div class="relative h-48 w-full bg-gray-100">
+                    <img 
+                        src="{{ $product->image_url }}" 
+                        alt="{{ $product->name }}" 
+                        class="w-full h-full object-contain p-4 transition duration-500 group-hover:scale-105"
+                        onerror="this.src='https://via.placeholder.com/256x256?text=Produk+Tidak+Tersedia'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-semibold text-gray-800 truncate">{{ $product->name }}</h3>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">New</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-700 font-bold">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                        <a href="{{ route('products.show', $product) }}" class="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
+                            Detail
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
 
         <div class="text-center mt-8">
@@ -172,7 +158,7 @@
     </div>
 </section>
 
-<!-- Galeri - Horizontal Scrollable Grid -->
+<!-- Galeri - Responsive Grid -->
 <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
@@ -181,32 +167,18 @@
             <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-4"></div>
         </div>
 
-        <div class="relative">
-            <div class="overflow-x-auto pb-8 -mx-4 px-4 scrollbar-hide">
-                <div class="flex space-x-6" style="width: calc({{ ceil(count($galleries)/4) }} * (100% + 1.5rem))">
-                    @foreach(array_chunk($galleries->all(), 4) as $galleryRow)
-                    <div class="grid grid-cols-4 gap-6" style="width: calc(100% - 1.5rem)">
-                        @foreach($galleryRow as $gallery)
-                        <div class="relative group overflow-hidden rounded-xl shadow-md">
-                            <img src="{{ $gallery->image_url }}" alt="{{ $gallery->title }}" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                                <h3 class="text-white font-semibold text-lg mb-1 transform translate-y-4 group-hover:translate-y-0 transition duration-300">{{ $gallery->title }}</h3>
-                                <p class="text-blue-100 text-sm transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-100">Lihat detail</p>
-                            </div>
-                            <a href="{{ $gallery->image_url }}" class="absolute inset-0" data-lightbox="gallery" data-title="{{ $gallery->title }}"></a>
-                        </div>
-                        @endforeach
-                    </div>
-                    @endforeach
+        <!-- Responsive Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            @foreach($galleries as $gallery)
+            <div class="relative group overflow-hidden rounded-xl shadow-md">
+                <img src="{{ $gallery->image_url }}" alt="{{ $gallery->title }}" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white font-semibold text-lg mb-1 transform translate-y-4 group-hover:translate-y-0 transition duration-300">{{ $gallery->title }}</h3>
+                    <p class="text-blue-100 text-sm transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-100">Lihat detail</p>
                 </div>
+                <a href="{{ $gallery->image_url }}" class="absolute inset-0" data-lightbox="gallery" data-title="{{ $gallery->title }}"></a>
             </div>
-        </div>
-
-        <!-- Scroll indicators (optional) -->
-        <div class="flex justify-center mt-4 space-x-2">
-            @for($i = 0; $i < ceil(count($galleries)/4); $i++)
-            <button class="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-600 transition-colors scroll-indicator" data-index="{{ $i }}"></button>
-            @endfor
+            @endforeach
         </div>
 
         <div class="text-center mt-8">
