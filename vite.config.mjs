@@ -4,16 +4,11 @@ import path from "path";
 
 export default defineConfig({
     server: {
-        host: "localhost", // paksa gunakan localhost
+        host: "localhost",
     },
     plugins: [
         laravel({
-            input: [
-                "resources/css/app.css",
-                "resources/js/app.js",
-                "resources/css/admin.css",
-                "resources/js/admin.js",
-            ],
+            input: ["resources/css/app.css", "resources/js/app.js"],
             refresh: true,
         }),
     ],
