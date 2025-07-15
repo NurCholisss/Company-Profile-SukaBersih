@@ -10,17 +10,20 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminProductController extends Controller
 {
+    // Menampilkan daftar produk
     public function index(): View
     {
         $products = Product::latest()->paginate(10);
         return view('admin.products.index', compact('products'));
     }
 
+    // Menampilkan form tambah produk baru
     public function create(): View
     {
         return view('admin.products.create');
     }
 
+    // Menyimpan data produk baru ke database dan upload gambar
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -34,16 +37,18 @@ class AdminProductController extends Controller
             $validated['image'] = $request->file('image')->store('products', 'public');
         }
 
-        Product::create($validated);
+        Product::create($validated); // Simpan produk ke database
 
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
+    // Menampilkan form edit produk
     public function edit(Product $product): View
     {
         return view('admin.products.edit', compact('product'));
     }
 
+    // Memperbarui data produk
     public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
@@ -53,8 +58,8 @@ class AdminProductController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        // Jika ada gambar baru, hapus yang lama
         if ($request->hasFile('image')) {
-            // Delete old image if exists
             if ($product->image) {
                 Storage::disk('public')->delete($product->image);
             }
@@ -66,14 +71,15 @@ class AdminProductController extends Controller
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diperbarui!');
     }
 
+    // Menghapus produk dan gambar terkait
     public function destroy(Product $product)
     {
         if ($product->image) {
             Storage::disk('public')->delete($product->image);
         }
-        
+
         $product->delete();
-        
+
         return back()->with('success', 'Produk berhasil dihapus!');
     }
 }

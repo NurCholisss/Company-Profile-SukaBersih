@@ -10,13 +10,14 @@ use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
+    // Menampilkan halaman dashboard admin
     public function index(): View
     {
-        $productCount = Product::count();
-        $galleryCount = Gallery::count();
-        $messageCount = Message::count();
+        $productCount = Product::count(); // Jumlah total produk
+        $galleryCount = Gallery::count(); // Jumlah total galeri
+        $messageCount = Message::count(); // Jumlah total pesan
 
-        // Ambil 5 pesan terbaru
+        // Ambil 5 pesan terbaru untuk ditampilkan di dashboard
         $recentMessages = Message::latest()->take(5)->get();
 
         return view('admin.dashboard', compact(
