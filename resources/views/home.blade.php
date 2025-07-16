@@ -191,19 +191,28 @@
             <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-4"></div>
         </div>
 
-        {{-- Grid Galeri --}}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            @foreach($galleries as $gallery)
-            <div class="relative group overflow-hidden rounded-xl shadow-md">
-                <img src="{{ $gallery->image_url }}" alt="{{ $gallery->title }}" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <h3 class="text-white font-semibold text-lg mb-1 transform translate-y-4 group-hover:translate-y-0 transition duration-300">{{ $gallery->title }}</h3>
-                    <p class="text-blue-100 text-sm transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-100">Lihat detail</p>
+        {{-- Menampilkan 4 galeri pertama --}}
+        <section class="py-16 bg-gradient-to-b from-blue-50 to-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Galeri <span class="text-blue-600">Kami</span></h2>
+                    <p class="text-gray-600 mt-2">Lihat cuplikan dokumentasi aktivitas dan produk kami.</p>
                 </div>
-                <a href="{{ $gallery->image_url }}" class="absolute inset-0" data-lightbox="gallery" data-title="{{ $gallery->title }}"></a>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    @foreach($galleries as $gallery)
+                    <div class="relative group overflow-hidden rounded-xl shadow-md">
+                        <img src="{{ $gallery->image_url }}" alt="{{ $gallery->title }}" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h3 class="text-white font-semibold text-lg mb-1 transform translate-y-4 group-hover:translate-y-0 transition duration-300">{{ $gallery->title }}</h3>
+                        </div>
+                        <a href="{{ $gallery->image_url }}" class="absolute inset-0" data-lightbox="gallery" data-title="{{ $gallery->title }}"></a>
+                    </div>
+                    @endforeach
+                </div>
             </div>
-            @endforeach
-        </div>
+        </section>
+
 
         {{-- Tombol galeri lengkap --}}
         <div class="text-center mt-8">

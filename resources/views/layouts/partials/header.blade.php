@@ -82,9 +82,3 @@
         </div>
     </div>
 </header>
-
-<style>
-    .backdrop-blur-sm {
-        backdrop-filter: blur(8px);
-    }
-</style>
