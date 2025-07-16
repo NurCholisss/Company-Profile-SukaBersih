@@ -10,7 +10,7 @@
                     </svg>
                     <span class="ml-2 text-xl font-bold">Suka<span class="text-blue-400">Bersih</span></span>
                 </div>
-                <p class="text-gray-400">Solusi kebersihan profesional untuk rumah dan bisnis Anda.</p>
+                <p class="text-gray-400">Solusi Alat Kebersihan Terjangkau & Berkualitas untuk Rumah dan Usaha Anda!</p>
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-400 hover:text-white transition">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@
                         <svg class="w-5 h-5 text-blue-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
-                        <span>info@sukabersih.com</span>
+                        <span>sukabersih@gmail.com</span>
                     </div>
                 </address>
             </div>
@@ -86,7 +86,7 @@
 
         <!-- Copyright -->
         <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
-            <p>&copy; {{ date('Y') }} Suka Bersih. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} Suka Bersih</p>
         </div>
     </div>
 </footer>

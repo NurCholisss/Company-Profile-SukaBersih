@@ -31,7 +31,6 @@
                         class="w-full h-full object-contain p-4 transition group-hover:scale-105"
                         onerror="this.src='https://via.placeholder.com/256x256?text=Produk+Tidak+Tersedia'">
                     @if($product->is_new)
-                    <div class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BARU</div>
                     @endif
                 </div>
 
@@ -42,10 +41,12 @@
                         <span class="text-blue-700 font-bold">
                             Rp {{ number_format($product->price, 0, ',', '.') }}
                         </span>
-                        <a href="{{ route('products.show', $product) }}" class="text-blue-600 hover:text-blue-800 text-sm flex items-center gap-1">
-                            Detail
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </a>
+                        <a href="{{ route('products.show', $product) }}" class="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
+                                Detail
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
                     </div>
                 </div>
             </div>
@@ -58,33 +59,35 @@
         </div>
 
         <!-- FITUR KEUNGGULAN -->
-        <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
             <div class="p-6 bg-blue-50 rounded-xl text-center">
                 <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                 </div>
                 <h3 class="text-lg font-semibold text-gray-800 mb-2">Kualitas Terjamin</h3>
-                <p class="text-sm text-gray-600">Produk kami melalui quality control ketat.</p>
+                <p class="text-gray-600 text-sm">Produk kami melalui proses quality control yang ketat.</p>
             </div>
             <div class="p-6 bg-blue-50 rounded-xl text-center">
                 <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2"/>
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2zm0 8c-1.657 0-3-.895-3-2s1.343-2 3-2 3 .895 3 2-1.343 2-3 2z"></path>
                     </svg>
                 </div>
                 <h3 class="text-lg font-semibold text-gray-800 mb-2">Ramah Lingkungan</h3>
-                <p class="text-sm text-gray-600">Bahan-bahan aman dan dapat terurai.</p>
+                <p class="text-gray-600 text-sm">Bahan-bahan yang digunakan aman untuk lingkungan.</p>
             </div>
             <div class="p-6 bg-blue-50 rounded-xl text-center">
                 <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1"/>
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
                     </svg>
                 </div>
                 <h3 class="text-lg font-semibold text-gray-800 mb-2">Harga Terjangkau</h3>
-                <p class="text-sm text-gray-600">Harga bersahabat dengan kualitas premium.</p>
+                <p class="text-gray-600 text-sm">Kualitas premium dengan harga yang kompetitif.</p>
             </div>
         </div>
     </div>

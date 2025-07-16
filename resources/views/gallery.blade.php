@@ -9,13 +9,9 @@
 
         <!-- Judul Galeri -->
         <div class="text-center mb-8 md:mb-12">
-            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-                Galeri <span class="text-blue-600">Kami</span>
-            </h1>
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Galeri <span class="text-blue-600">Kami</span></h1>
             <div class="w-16 sm:w-20 h-1 sm:h-1.5 bg-blue-600 mx-auto mb-4 sm:mb-6"></div>
-            <p class="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto px-4 sm:px-0">
-                Lihat dokumentasi lengkap aktivitas dan produk kami sebagai bagian dari upaya menjaga kebersihan.
-            </p>
+            <p class="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto px-4 sm:px-0">Lihat bagaimana kami memproduksi setiap alat kebersihan dengan teliti, dari bahan pilihan hingga siap digunakan di rumah dan bisnis Anda.</p>
         </div>
 
         <!-- Grid Galeri -->
