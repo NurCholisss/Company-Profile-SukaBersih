@@ -4,51 +4,44 @@
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
-    <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-800 mb-2">Hasil Pencarian untuk "{{ $query }}"</h1>
-        <p class="text-gray-600">{{ $products->total() }} hasil ditemukan</p>
-    </div>
+    <h1 class="text-2xl font-bold mb-4">Hasil Pencarian untuk: "{{ $query }}"</h1>
+    <p class="text-gray-600 mb-6">{{ $products->total() }} hasil ditemukan</p>
 
     @if($products->count() > 0)
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             @foreach($products as $product)
-                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-                    <a href="{{ route('products.show', $product) }}" class="block">
-                        @if($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" 
-                                 alt="{{ $product->name }}" 
-                                 class="w-full h-48 object-cover">
-                        @else
-                            <div class="w-full h-48 bg-gray-100 flex items-center justify-center">
-                                <span class="text-gray-400">No Image</span>
-                            </div>
-                        @endif
-                    </a>
+                <div class="bg-white shadow rounded-lg overflow-hidden">
+                    {{-- Gambar Produk --}}
+                    @if($product->image)
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover">
+                    @else
+                        <div class="w-full h-48 bg-gray-100 flex items-center justify-center text-gray-400">No Image</div>
+                    @endif
+
+                    {{-- Info Produk --}}
                     <div class="p-4">
-                        <h3 class="font-medium text-gray-900 mb-1">{{ $product->name }}</h3>
-                        <p class="text-blue-600 font-bold text-lg mb-3">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
-                        <a href="{{ route('products.show', $product) }}" 
-                           class="text-blue-600 hover:text-blue-800 font-medium text-sm inline-flex items-center">
-                            Lihat Detail
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
+                        <h3 class="font-semibold text-lg">{{ $product->name }}</h3>
+                        <p class="text-blue-600 font-bold mt-2">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                        <a href="{{ route('products.show', $product) }}" class="inline-block mt-4 text-sm text-blue-500 hover:underline">Lihat Detail</a>
                     </div>
                 </div>
             @endforeach
         </div>
 
-        <div class="mt-6">
+        {{-- Navigasi Halaman --}}
+        <div class="mt-8">
             {{ $products->links() }}
         </div>
     @else
-        <div class="bg-white rounded-xl shadow-sm p-8 text-center">
-            <svg class="w-16 h-16 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        {{-- Jika Tidak Ada Produk --}}
+        <div class="bg-white p-12 text-center rounded-lg shadow mt-8">
+            <svg class="mx-auto mb-4 w-12 h-12 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h3 class="text-lg font-medium text-gray-500 mt-4">Produk tidak ditemukan</h3>
-            <p class="text-gray-400 mt-2">Coba dengan kata kunci yang berbeda</p>
+            <h3 class="text-xl font-semibold mb-2">Produk tidak ditemukan</h3>
+            <p class="text-gray-600">Coba gunakan kata kunci lain atau periksa ejaan pencarian Anda.</p>
         </div>
     @endif
 </div>
