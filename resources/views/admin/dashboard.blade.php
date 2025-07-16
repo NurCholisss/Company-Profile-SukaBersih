@@ -65,37 +65,72 @@
                     </div>
                 </div>
                 
-                <!-- Recent Messages -->
+                <!-- Recent Messages - Desktop Full Version -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
                     <div class="p-4 md:p-6 border-b border-gray-200">
                         <h2 class="text-lg md:text-xl font-semibold text-gray-800">Pesan Terbaru</h2>
                     </div>
                     
-                    <div class="overflow-x-auto w-full">
-                        <table class="min-w-[600px] divide-y divide-gray-200">
+                    <div class="hidden md:block overflow-x-auto w-full">
+                        <table class="w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subjek</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subjek</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pesan</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach($recentMessages as $message)
                                 <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-900">{{ $message->name }}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500">{{ $message->email }}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500">{{ Str::limit($message->subject, 20) }}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500">{{ $message->created_at->format('d M Y') }}</td>
-                                    <td class="px-4 py-4 text-sm text-blue-600 hover:underline">
-                                        <a href="{{ route('admin.contact.show', $message) }}">Lihat</a>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $message->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $message->email }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $message->subject }}</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">{{ $message->message }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $message->created_at->format('d M Y H:i') }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:underline">
+                                        <a href="{{ route('admin.contact.show', $message) }}" class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                            </svg>
+                                            Detail
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+
+                    <!-- Mobile Version (tersembunyi di desktop) -->
+                    <div class="md:hidden">
+                        <div class="divide-y divide-gray-200">
+                            @foreach($recentMessages as $message)
+                            <div class="p-4 hover:bg-gray-50 transition-colors duration-150">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-sm font-medium text-gray-900">{{ $message->name }}</h3>
+                                        <p class="text-xs text-gray-500">{{ $message->email }}</p>
+                                    </div>
+                                    <span class="text-xs text-gray-500">{{ $message->created_at->format('d M Y') }}</span>
+                                </div>
+                                <p class="mt-1 text-sm text-gray-500"><span class="font-medium">Subjek:</span> {{ Str::limit($message->subject, 30) }}</p>
+                                <div class="mt-2 flex justify-end">
+                                    <a href="{{ route('admin.contact.show', $message) }}" class="text-xs text-blue-600 hover:underline flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                        </svg>
+                                        Lihat
+                                    </a>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

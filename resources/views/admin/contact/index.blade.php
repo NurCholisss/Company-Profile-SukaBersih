@@ -8,8 +8,7 @@
         <!-- Sidebar - Hidden on mobile by default -->
         @include('admin.partials.sidebar')
         
-                <main class="flex-1 pl-16 group-hover/sidebar:pl-64 transition-all duration-300 overflow-auto">
-                <div class="p-4 md:p-8">
+                <main class=" flex-1 pl-[72px] <!-- Mobile: 64px sidebar + 8px jarak --> md:pl-[272px] <!-- Desktop: 256px sidebar + 16px jarak --> group-hover/sidebar:pl-[272px] transition-all duration-300 overflow-auto ">
                 <!-- Header -->
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
                     <div>
