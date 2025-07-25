@@ -31,6 +31,17 @@
         </svg>
         <span class="ml-2 hidden md:block group-hover/sidebar:block">Galeri</span>
       </a>
+
+      <a href="{{ route('admin.orders.index') }}" 
+   class="flex items-center p-2 md:px-4 md:py-3 rounded-lg transition-all duration-200 
+          {{ request()->routeIs('admin.orders*') ? 'bg-blue-700' : 'hover:bg-blue-700 hover:bg-opacity-50' }}">
+  <svg class="w-5 h-5 min-w-[20px] mr-0 md:mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+          d="M9 17v-2a4 4 0 014-4h4m0 0V7m0 4l-4-4m-2 14h6a2 2 0 002-2v-5a2 2 0 00-2-2h-6a2 2 0 00-2 2v5a2 2 0 002 2z" />
+  </svg>
+  <span class="ml-2 hidden md:block group-hover/sidebar:block">Orderan</span>
+</a>
+
       
       <a href="{{ route('admin.contact.index') }}" 
          class="flex items-center p-2 md:px-4 md:py-3 rounded-lg transition-all duration-200 

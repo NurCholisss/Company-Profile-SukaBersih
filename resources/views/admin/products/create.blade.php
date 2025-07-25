@@ -45,7 +45,14 @@
                                         <input type="number" id="price" name="price" min="0" step="0.01" required class="block w-full pl-10 pr-12 py-2 rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 transition duration-200">
                                     </div>
                                 </div>
-                                
+
+                                <!-- Stock -->
+                                <div class="mb-4">
+                                    <label for="stock" class="block text-sm font-medium text-gray-700">Stok Produk</label>
+                                    <input type="number" name="stock" id="stock" value="{{ old('stock', $product->stock ?? '') }}" required
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                                </div>
+
                                 <!-- Image Upload -->
                                 <div>
                                     <label for="image" class="block text-sm font-medium text-gray-700 mb-1">Gambar Produk</label>

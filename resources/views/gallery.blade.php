@@ -42,7 +42,6 @@
         <div class="mt-8 sm:mt-12">
             {{ $galleries->links('vendor.pagination.tailwind') }}
         </div>
-
     </div>
 </section>
 @endsection

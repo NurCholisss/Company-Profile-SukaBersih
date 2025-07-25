@@ -15,6 +15,7 @@ class Product extends Model
         'description',
         'price',
         'image',
+        'stock',
     ];
 
     // Casting kolom 'price' agar dibaca sebagai desimal dengan 2 angka di belakang koma

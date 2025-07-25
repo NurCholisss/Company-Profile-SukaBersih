@@ -8,13 +8,15 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 // Admin Controllers
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminContactController;
-
+use App\Http\Controllers\Admin\AdminOrderController;
 //Public Routes
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -25,6 +27,14 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
+// Checkout
+Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout.index');
+Route::post('/checkout', [OrderController::class, 'store'])->name('checkout.store');
+Route::get('/order-success', [OrderController::class, 'success'])->name('order.success');
+Route::post('/order/direct/{product}', [OrderController::class, 'directOrder'])->name('order.direct');
+Route::post('/order/upload-proof', [OrderController::class, 'uploadProof'])->name('order.upload-proof');
+Route::get('/history', [OrderController::class, 'riwayatForm'])->name('riwayat');
+Route::post('/history', [OrderController::class, 'riwayatCheck'])->name('check');
 
 //Authentication Routes
 
@@ -61,4 +71,11 @@ Route::prefix('admin')->middleware(['auth',\App\Http\Middleware\RoleMiddleware::
     Route::get('/messages/{message}', [AdminContactController::class, 'show'])->name('admin.contact.show');
     Route::delete('/{contact}', [AdminContactController::class, 'destroy'])->name('admin.contact.destroy');
     Route::post('/{contact}/mark-as-read', [AdminContactController::class, 'markAsRead'])->name('admin.contact.markAsRead');
+
+    // Orders
+    Route::get('/orders', [AdminOrderController::class, 'index'])->name('admin.orders.index');
+    Route::get('/orders/{id}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
+    Route::delete('/{orders}', [AdminOrderController::class, 'destroy'])->name('admin.orders.destroy');
+    Route::patch('/admin/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+    Route::get('/orders/show-all', [AdminOrderController::class, 'showAll'])->name('admin.orders.showAll');
 });

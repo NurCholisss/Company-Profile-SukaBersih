@@ -27,11 +27,12 @@ class AdminProductController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric|min:0',
+        'stock' => 'required|integer|min:0', // ✅ TAMBAHKAN INI
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('products', 'public');
@@ -50,26 +51,27 @@ class AdminProductController extends Controller
 
     // Memperbarui data produk
     public function update(Request $request, Product $product)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric|min:0',
+        'stock' => 'required|integer|min:0', // ✅ TAMBAHKAN INI
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        // Jika ada gambar baru, hapus yang lama
-        if ($request->hasFile('image')) {
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
-            }
-            $validated['image'] = $request->file('image')->store('products', 'public');
+    if ($request->hasFile('image')) {
+        if ($product->image) {
+            Storage::disk('public')->delete($product->image);
         }
-
-        $product->update($validated);
-
-        return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diperbarui!');
+        $validated['image'] = $request->file('image')->store('products', 'public');
     }
+
+    $product->update($validated); // ✅ Ini akan menyimpan stock juga
+
+    return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diperbarui!');
+}
+
 
     // Menghapus produk dan gambar terkait
     public function destroy(Product $product)

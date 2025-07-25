@@ -46,6 +46,7 @@
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gambar</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga</th>
+                                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stok</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">Tanggal Dibuat</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                                 </tr>
@@ -61,6 +62,9 @@
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="text-sm text-gray-900">Rp {{ number_format($product->price, 0, ',', '.') }}</div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">{{ $product->stock }}</div>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap hidden sm:table-cell">
                                         <div class="text-sm text-gray-500">{{ $product->created_at->format('d M Y') }}</div>

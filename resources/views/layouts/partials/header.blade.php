@@ -33,6 +33,8 @@
                 <a href="{{ route('products') }}" class="px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 {{ request()->routeIs('products*') ? 'bg-blue-100 text-blue-700' : 'text-gray-700 hover:bg-gray-100' }}">Produk</a>
                 <a href="{{ route('gallery') }}" class="px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 {{ request()->routeIs('gallery') ? 'bg-blue-100 text-blue-700' : 'text-gray-700 hover:bg-gray-100' }}">Galeri</a>
                 <a href="{{ route('contact') }}" class="px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 {{ request()->routeIs('contact') ? 'bg-blue-100 text-blue-700' : 'text-gray-700 hover:bg-gray-100' }}">Kontak</a>
+                <a href="{{ route('riwayat') }}" class="px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 {{ request()->routeIs('history') ? 'bg-blue-100 text-blue-700' : 'text-gray-700 hover:bg-gray-100' }}">Riwayat</a>
+
                 @auth
                     <a href="{{ route('admin.dashboard') }}" class="px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 bg-blue-600 text-white hover:bg-blue-700 ml-2">
                         Dashboard

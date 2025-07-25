@@ -77,7 +77,7 @@
                                 </div>
                                 <div>
                                     <h3 class="font-medium text-gray-800 mb-1">Alamat Kantor</h3>
-                                    <p class="text-gray-600">Jl. Daha No. 168, Pekuncen, Kroya, Cilacap</p>
+                                    <p class="text-gray-600">Jl. Daha, Pekuncen, Kroya, Cilacap</p>
                                 </div>
                             </div>
                             
@@ -89,8 +89,8 @@
                                 </div>
                                 <div>
                                     <h3 class="font-medium text-gray-800 mb-1">WhatsApp</h3>
-                                    <p class="text-gray-600">0882-0031-01151</p>
-                                    <a href="https://wa.me/62882003101151" 
+                                    <p class="text-gray-600">0823-2581-0922</p>
+                                    <a href="https://wa.me/6282325810922" 
                                        target="_blank"
                                        class="mt-2 inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition">
                                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
@@ -98,18 +98,6 @@
                                         </svg>
                                         Chat via WhatsApp
                                     </a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 p-3 rounded-lg mr-4">
-                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-medium text-gray-800 mb-1">Email</h3>
-                                    <p class="text-gray-600">sukabersih@gmail.com</p>
                                 </div>
                             </div>
                         </div>
